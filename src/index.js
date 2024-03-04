@@ -32,7 +32,7 @@ form.addEventListener("submit", function (event) {
   detailsElement.innerHTML = `${formattedTime}, moderate rain <br /> Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>`;
 
   let windSpeedElement = document.querySelector("#wind-speed");
-  windSpeedElement.innerHTML = `${response.data.wind.speed},`;
+  windSpeedElement.innerHTML = ${response.data.wind.speed}km/h;
 
   console.log(cityName);
   if (cityName !== "") {
