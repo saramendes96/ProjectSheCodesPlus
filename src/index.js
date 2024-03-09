@@ -53,8 +53,9 @@ function updateTemperature(response) {
 
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
-
-  let icon = 
+  
+  let iconElement = document.querySelector("#icon");
+  iconElement.innerHTML = `<img src= "${response.data.condition.icon_url}" class= "current-temperature-icon" />`
   
 }
 
