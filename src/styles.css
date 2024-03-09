@@ -58,8 +58,7 @@ form {
 }
 
 .current-temperature-icon {
-  position: relative;
-  top: -8px;
+  float: left;
   font-size: 30px;
   margin-right: 10px;
 }
