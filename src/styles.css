@@ -56,7 +56,6 @@ form {
 .current-temperature {
   font-size: 48px;
 }
-
 .current-temperature-icon {
   float: left;
   font-size: 30px;
@@ -66,13 +65,12 @@ form {
 .current-temperature-value {
   font-size: 80px;
   font-weight: bold;
+  float: left;
 }
 
 .current-temperature-unit {
   font-size: 28px;
-  position: relative;
-  top: -38px;
-}
+  float: left;
 
 .current-details {
   color: rgba(39, 33, 66, 0.4);
