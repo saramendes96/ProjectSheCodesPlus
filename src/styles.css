@@ -59,10 +59,10 @@ form {
 }
 
 .current-temperature-icon {
-  position: relative;
-  top: -8px;
-  font-size: 40px;
-  margin-right: 10px;
+    position: relative;
+    font-size: 40px;
+    margin-right: 10px;
+    vertical-align: bottom;
 }
 
 .current-temperature-value {
