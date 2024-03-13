@@ -61,3 +61,6 @@ function updateTemperature(response) {
   descriptionElement.innerHTML = response.data.condition.description;
 }
 
+let forecast= document.querySelector("#forecast");
+
+forecast.innerHTML = 
