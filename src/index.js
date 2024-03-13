@@ -63,4 +63,15 @@ function updateTemperature(response) {
 
 let forecast= document.querySelector("#forecast");
 
-forecast.innerHTML = 
+forecast.innerHTML =   <div class="weather-forecast" id="forecast">
+  <div class="row">
+  <div class="col-2">
+  <div class="weather-forecast-date">
+  Thu
+  </div>
+  <div class="weather-forecast-icon">
+  🌤️ 
+</div>
+<div class="weather-forecast-temperatures">
+<span class="weather-forecast-temperature-max">
+18° </span> <span class="weather-forecast-temperature-min">12° </span> 
