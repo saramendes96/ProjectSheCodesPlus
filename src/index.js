@@ -62,30 +62,28 @@ function updateTemperature(response) {
 }
 
 function displayForecast() {
-let forecastElement = document.querySelector("#forecast");
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
 
-let days= ["Tue", "Wed","Thu", "Fri", "Sat"];
-let forecastHTML= "";
-
-  days.forEach(function(day) {
-  forecastHTML =
-  forecastHTML +
- `<div class="weather-forecast" id="forecast">
-  <div class="row">
-  <div class="col-2">
-  <div class="weather-forecast-date">
-  ${day}
-  </div>
-  <div class="weather-forecast-icon">
-  🌤️ 
-</div>
-<div class="weather-forecast-temperatures">
-<span class="weather-forecast-temperature-max">
-18° </span> <span class="weather-forecast-temperature-min">12° </span>
-`;
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+      <div class="weather-forecast-day">
+        <div class="weather-forecast-date">${day}</div>
+        <div class="weather-forecast-icon">🌤️</div>
+        <div class="weather-forecast-temperatures">
+          <div class="weather-forecast-temperature">
+            <strong>15º</strong>
+          
+          <span class="weather-forecast-temperature">9º</span></div>
+        </div>
+      </div>
+    `;
   });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
 }
 
-forecastElement.innerHTML = forecastHTML;
-  
 displayForecast();
