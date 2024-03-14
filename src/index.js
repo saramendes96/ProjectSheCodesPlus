@@ -86,6 +86,6 @@ let forecastHTML= "";
   });
 }
 
-forecastElement.innerHTML= forecastHTML;
+forecastElement.innerHTML = forecastHTML;
   
 displayForecast();
