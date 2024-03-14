@@ -62,7 +62,7 @@ function updateTemperature(response) {
 }
 
 function displayForecast() {
-let forecast= document.querySelector("#forecast");
+let forecastElement= document.querySelector("#forecast");
 
 let days= ["Tue", "Wed","Thu", "Fri", "Sat"];
 let forecastHTML= "";
@@ -86,4 +86,6 @@ let forecastHTML= "";
   });
 }
 
+forecastElement.innerHTML= forecastHTML;
+  
 displayForecast();
