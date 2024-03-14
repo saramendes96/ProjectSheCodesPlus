@@ -63,7 +63,7 @@ function updateTemperature(response) {
 
 function getForecast(city) {
 let apiKey = "ac399aato84e379f39f3cfe3ba24af50";
-let apiURL = `https://api.shecodes.io/weather/v1/forecast?query={city}&key={apiKey}&units=metric`;
+let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query={city}&key={apiKey}&units=metric`;
 axios(apiUrl).then(displayForecast);
 }
   
