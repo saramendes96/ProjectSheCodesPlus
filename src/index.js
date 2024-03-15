@@ -71,10 +71,9 @@ axios(apiUrl).then(displayForecast);
 function displayForecast(response) {
 console.log(response.data);
   
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day) {
     forecastHtml =
       forecastHtml +
       `
