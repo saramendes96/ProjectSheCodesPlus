@@ -103,5 +103,5 @@ console.log(response.data);
   forecastElement.innerHTML = forecastHtml;
 }
 
-getForecast("Paris");
+getForecast();
 
