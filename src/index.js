@@ -78,13 +78,15 @@ console.log(response.data);
       forecastHtml +
       `
       <div class="weather-forecast-day">
-        <div class="weather-forecast-date">${day}</div>
-        <div class="weather-forecast-icon">🌤️</div>
+        <div class="weather-forecast-date">Tue</div>
+        <div class="weather-forecast-icon">
+        <img src="${day.condition.icon_url}" />
+        </div>
         <div class="weather-forecast-temperatures">
           <div class="weather-forecast-temperature">
-            <strong>15º</strong>
+            <strong>${Math.round(day.temperature.maximum)}º</strong>
           
-          <span class="weather-forecast-temperature">9º</span></div>
+          <span class="weather-forecast-temperature">${Math.round(day.temperature.minimum)}9º</span></div>
         </div>
       </div>
     `;
