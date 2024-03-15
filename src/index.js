@@ -92,7 +92,7 @@ console.log(response.data);
           <div class="weather-forecast-temperature">
             <strong>${Math.round(day.temperature.maximum)}º</strong>
           
-          <span class="weather-forecast-temperature">${Math.round(day.temperature.minimum)}9º</span></div>
+          <span class="weather-forecast-temperature">${Math.round(day.temperature.minimum)}º</span></div>
         </div>
       </div>
     `;
