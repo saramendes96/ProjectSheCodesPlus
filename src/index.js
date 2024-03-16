@@ -2,18 +2,22 @@ let form = document.getElementById("weather-form");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
-  let inputElement = document.querySelector(".search-input")
+  let inputElement = document.querySelector(".search-input");
   let cityElement = document.querySelector(".current-city");
-  
+
   if (inputElement.value !== "") {
     cityElement.textContent = inputElement.value;
-    let apiKey = "ac399aato84e379f39f3cfe3ba24af50";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${inputElement.value}&key=${apiKey}`;
-    axios.get(apiUrl).then(updateTemperature);
+    searchCity(inputElement.value);
   } else {
     cityElement.textContent = "City Not Found";
   }
 });
+
+function searchCity(city) {
+  let apiKey = "ac399aato84e379f39f3cfe3ba24af50";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  axios.get(apiUrl).then(updateTemperature);
+}
 
 function updateTemperature(response) {
   let temperatureElement = document.querySelector(".current-temperature-value");
@@ -39,11 +43,8 @@ function updateTemperature(response) {
     daysofWeek[currentDate.getDay()]
   } ${currentHour}:${currentTime}`;
 
-  let cityInput = document.querySelector(".search-input").value;
-  let cityName = cityInput.trim();
-
   let cityElement = document.querySelector(".current-city");
-  cityElement.textContent = cityName;
+  cityElement.innerHTML = response.data.city;
 
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = `${formattedTime}`;
@@ -53,38 +54,40 @@ function updateTemperature(response) {
 
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
-  
+
   let iconElement = document.querySelector("#icon");
-  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="current-temperature-icon" alt="${response.data.condition.description}" />`; 
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="current-temperature-icon" alt="${response.data.condition.description}" />`;
 
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.condition.description;
+
+  getForecast(response.data.city);
 }
 
-function formatDay (timestamp) {
-let date = new Date(timestamp * 1000);
-let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-return days [date.getDay()];
+  return days[date.getDay()];
 }
-  
+
 function getForecast(city) {
-let apiKey = "ac399aato84e379f39f3cfe3ba24af50";
-let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  let apiKey = "ac399aato84e379f39f3cfe3ba24af50";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
 
-axios(apiUrl).then(displayForecast);
+  axios(apiUrl).then(displayForecast);
 }
-  
+
 function displayForecast(response) {
-console.log(response.data);
-  
+  console.log(response.data);
+
   let forecastHtml = "";
 
   response.data.daily.forEach(function (day, index) {
     if (index < 5) {
-    forecastHtml =
-      forecastHtml +
-      `
+      forecastHtml =
+        forecastHtml +
+        `
       <div class="weather-forecast-day">
         <div class="weather-forecast-date">${formatDay(day.time)}</div>
         <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
@@ -92,16 +95,17 @@ console.log(response.data);
           <div class="weather-forecast-temperature">
             <strong>${Math.round(day.temperature.maximum)}º</strong>
           
-          <span class="weather-forecast-temperature">${Math.round(day.temperature.minimum)}º</span></div>
+          <span class="weather-forecast-temperature">${Math.round(
+            day.temperature.minimum
+          )}º</span></div>
         </div>
       </div>
     `;
-   } 
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
 
-getForecast("Paris");
-
+searchCity("Paris");
